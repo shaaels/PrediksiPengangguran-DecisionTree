@@ -6,7 +6,7 @@ import os
 
 # ================== Membaca Data ==================
 # Membaca file CSV
-file_path = "D:\OneDrive\Dokumen\Kampus Merdeka Stupen\maribelajar\Capstone Project\Project\datamodel.csv"
+file_path = "D:/Backup sementara/Users/Rifqi Abdi W/Downloads/Python/Dataset_Fix_cs.csv"
 df = pd.read_csv(file_path, delimiter=';')
 
 # Kolom yang akan diabaikan
@@ -110,7 +110,7 @@ with st.form(key="input_form"):
 
 
 # ================== Fungsi Simpan CSV ==================
-def save_or_append_prediction_to_csv(data, file_name="predictions.csv", folder_path=r"C:\Users\ASUS\Komunitas Maribelajar Indonesia\CP7 - 02 - Bhinneka - Documents\General\Predictions"):
+def save_or_append_prediction_to_csv(data, file_name="predictions.csv", folder_path=r"C:\Users\rifqi\Komunitas Maribelajar Indonesia\CP7 - 02 - Bhinneka - Documents\General\Predictions"):
     # Membuat folder jika belum ada
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
@@ -151,11 +151,22 @@ if submit_button:
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
 
+# ================== URL laporan Power BI Anda ================== 
+power_bi_url = "https://app.powerbi.com/view?r=eyJrIjoiMDZhMzM4NTUtNjRmZS00M2Q5LWE5YmEtZGY1MjFjODEyMDc0IiwidCI6ImQ3Yjk1ZWM0LTlhN2YtNDI2MC1iMmUzLWViNTNmMGFjODQwMSIsImMiOjEwfQ%3D%3D"
+
+# Embed iframe ke dalam Streamlit
+st.components.v1.html(
+    f'<iframe src="{power_bi_url}" width="100%" height="600" frameborder="0" allowfullscreen="true"></iframe>',
+    width=720,
+    height=400,
+    scrolling=True
+)
+
 # ================== Tampilkan Data & Ringkasan ==================
-st.markdown("### Ringkasan Data Input:")
+st.markdown("### Ringkasan Dataset Prediksi:")
 st.write(df.head())
 
-st.markdown("### Statistik Data:")
+st.markdown("### Statistik Dataset Prediksi:")
 st.write(df.describe())
 
 # ================== Footer ==================
